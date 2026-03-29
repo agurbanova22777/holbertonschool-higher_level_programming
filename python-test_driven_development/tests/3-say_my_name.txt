@@ -1,0 +1,31 @@
+Load say_my_name from the task file (the filename is not a valid import name).
+
+>>> import importlib.util
+>>> spec = importlib.util.spec_from_file_location("say_my_name_module", "./3-say_my_name.py")
+>>> mod = importlib.util.module_from_spec(spec)
+>>> spec.loader.exec_module(mod)
+>>> say_my_name = mod.say_my_name
+
+Basic usage.
+
+>>> say_my_name("John", "Smith")
+My name is John Smith
+>>> say_my_name("Walter", "White")
+My name is Walter White
+>>> say_my_name("Bob")
+My name is Bob 
+
+Type validation.
+
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+>>> say_my_name("John", 12)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+Missing required argument.
+
+>>> say_my_name()
+Traceback (most recent call last):
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
