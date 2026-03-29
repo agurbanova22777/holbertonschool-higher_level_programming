@@ -6,18 +6,23 @@ Load add_integer from the task file (the filename is not a valid import name).
 >>> spec.loader.exec_module(mod)
 >>> add_integer = mod.add_integer
 
-Basic cases.
+Regular addition.
 
 >>> add_integer(1, 2)
 3
->>> add_integer(98)
-196
 >>> add_integer(100, -2)
 98
 >>> add_integer(-10, 5)
 -5
 
-Floats are cast to integers.
+Default argument.
+
+>>> add_integer(98)
+196
+>>> add_integer(2)
+100
+
+Integer casting from floats.
 
 >>> add_integer(3.7, 2)
 5
@@ -25,11 +30,6 @@ Floats are cast to integers.
 5
 >>> add_integer(-3.9, 2)
 -1
-
-b default value.
-
->>> add_integer(2)
-100
 
 Type checking.
 
@@ -46,7 +46,13 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 TypeError: b must be an integer
 
-Missing required argument.
+Float overflow (infinity) should raise OverflowError because floats are cast to int.
+
+>>> add_integer(float('inf'), 1)
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+Missing arguments.
 
 >>> add_integer()
 Traceback (most recent call last):
