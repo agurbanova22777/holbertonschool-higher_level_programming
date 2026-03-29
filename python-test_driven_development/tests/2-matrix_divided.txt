@@ -1,0 +1,57 @@
+Load matrix_divided from the task file (the filename is not a valid import name).
+
+>>> import importlib.util
+>>> spec = importlib.util.spec_from_file_location("matrix_divided_module", "./2-matrix_divided.py")
+>>> mod = importlib.util.module_from_spec(spec)
+>>> spec.loader.exec_module(mod)
+>>> matrix_divided = mod.matrix_divided
+
+Basic division and immutability.
+
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+>>> matrix
+[[1, 2, 3], [4, 5, 6]]
+
+Rounding to 2 decimals.
+
+>>> matrix_divided([[1, 2]], 8)
+[[0.12, 0.25]]
+>>> matrix_divided([[2.5, 3.5]], 2)
+[[1.25, 1.75]]
+
+Negative divisor.
+
+>>> matrix_divided([[1, -2], [3, -4]], -2)
+[[-0.5, 1.0], [-1.5, 2.0]]
+
+div validation.
+
+>>> matrix_divided([[1, 2]], "2")
+Traceback (most recent call last):
+TypeError: div must be a number
+>>> matrix_divided([[1, 2]], 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+matrix type/shape validation.
+
+>>> matrix_divided("not a matrix", 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([1, 2, 3], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([[1, 2], [3]], 2)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+>>> matrix_divided([[1, 2], ["3", 4]], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([[]], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
