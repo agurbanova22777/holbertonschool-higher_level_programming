@@ -52,6 +52,12 @@ Float overflow (infinity) should raise OverflowError because floats are cast to 
 Traceback (most recent call last):
 OverflowError: cannot convert float infinity to integer
 
+NaN cast to int should raise ValueError.
+
+>>> add_integer(float('nan'), 1)
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
+
 Missing arguments.
 
 >>> add_integer()
