@@ -26,6 +26,11 @@ Negative divisor.
 >>> matrix_divided([[1, -2], [3, -4]], -2)
 [[-0.5, 1.0], [-1.5, 2.0]]
 
+Division by infinity produces zeros.
+
+>>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+[[0.0, 0.0], [0.0, 0.0]]
+
 div validation.
 
 >>> matrix_divided([[1, 2]], "2")
