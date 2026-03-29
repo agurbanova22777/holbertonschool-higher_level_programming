@@ -1,0 +1,41 @@
+Load text_indentation from the task file (the filename is not a valid import name).
+
+>>> import importlib.util
+>>> spec = importlib.util.spec_from_file_location("text_indentation_module", "./5-text_indentation.py")
+>>> mod = importlib.util.module_from_spec(spec)
+>>> spec.loader.exec_module(mod)
+>>> text_indentation = mod.text_indentation
+
+Basic punctuation splitting and trimming.
+
+>>> text_indentation("Hello.  World")
+Hello.
+<BLANKLINE>
+World
+>>> text_indentation("A? B")
+A?
+<BLANKLINE>
+B
+>>> text_indentation("X:   Y")
+X:
+<BLANKLINE>
+Y
+
+Leading/trailing spaces should not appear at beginning/end of printed lines.
+
+>>> text_indentation("   Hi.   There.  ")
+Hi.
+<BLANKLINE>
+There.
+
+Type validation.
+
+>>> text_indentation(123)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+Missing required argument.
+
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
