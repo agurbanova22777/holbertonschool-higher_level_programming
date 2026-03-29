@@ -1,0 +1,40 @@
+Load print_square from the task file (the filename is not a valid import name).
+
+>>> import importlib.util
+>>> spec = importlib.util.spec_from_file_location("print_square_module", "./4-print_square.py")
+>>> mod = importlib.util.module_from_spec(spec)
+>>> spec.loader.exec_module(mod)
+>>> print_square = mod.print_square
+
+Basic squares.
+
+>>> print_square(1)
+#
+>>> print_square(2)
+##
+##
+
+Size 0 prints nothing.
+
+>>> print_square(0)
+
+Validation.
+
+>>> print_square(-1)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+>>> print_square("4")
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> print_square(3.2)
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> print_square(-3.2)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+Missing required argument.
+
+>>> print_square()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
