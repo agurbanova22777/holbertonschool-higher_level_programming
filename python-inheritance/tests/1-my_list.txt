@@ -1,8 +1,19 @@
 The ``MyList`` class inherits from ``list`` and adds a ``print_sorted()`` method.
 
-Example:
+It prints a sorted (ascending) version of the list without modifying the original list.
 
 >>> MyList = __import__('1-my_list').MyList
+
+Empty list:
+
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
+>>> print(my_list)
+[]
+
+List with positive numbers:
+
 >>> my_list = MyList()
 >>> my_list.append(1)
 >>> my_list.append(4)
@@ -13,3 +24,14 @@ Example:
 [1, 2, 3, 4, 5]
 >>> print(my_list)
 [1, 4, 2, 3, 5]
+
+List with a negative number:
+
+>>> my_list = MyList()
+>>> my_list.append(10)
+>>> my_list.append(-3)
+>>> my_list.append(7)
+>>> my_list.print_sorted()
+[-3, 7, 10]
+>>> print(my_list)
+[10, -3, 7]
