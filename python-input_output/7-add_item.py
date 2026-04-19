@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Adds all command-line arguments to a Python list and saves it to add_item.json."""
+"""Add all arguments to a list, then save it to add_item.json."""
 
 import sys
 
@@ -8,7 +8,7 @@ load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 
 
 def main():
-    """Load a list from add_item.json, extend it with args, then save it back."""
+    """Load list from JSON, extend with args, and save it back."""
     filename = "add_item.json"
 
     try:

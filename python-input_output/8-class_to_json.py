@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a function that returns a JSON-serializable dict description of an object."""
+"""Return a JSON-serializable dictionary description of an object."""
 
 
 def class_to_json(obj):

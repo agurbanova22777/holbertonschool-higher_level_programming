@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a Student class with a JSON-serializable dictionary representation."""
+"""Student class with a JSON-serializable dictionary representation."""
 
 
 class Student:
