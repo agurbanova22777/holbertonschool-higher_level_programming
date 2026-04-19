@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Defines a function that returns a Python object represented by a JSON string."""
+"""
+Defines a function that returns a Python object represented
+by a JSON string.
+"""
 
 import json
 
