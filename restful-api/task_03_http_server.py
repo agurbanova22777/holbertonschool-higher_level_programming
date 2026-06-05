@@ -32,7 +32,7 @@ class SimpleServer(http.server.BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Not Found")
+            self.wfile.write(b"Endpoint not found")
 
 def run():
     """Start the server on port 8000"""
