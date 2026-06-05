@@ -16,7 +16,7 @@ def home():
 @app.route("/data")
 def data():
     """Returns a list of all usernames stored in the API."""
-    return jsonify(users)
+    return jsonify(list(users.keys()))
 
 @app.route("/status")
 def status():
