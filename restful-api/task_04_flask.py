@@ -6,22 +6,22 @@ from flask import Flask
 from flask import jsonify, request
 
 app = Flask(__name__)
+users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
 
 @app.route("/")
 def home():
     """Root endpoint — confirms the API is running."""
-    return "<p>Welcome to the Flask API!</p>"
+    return "Welcome to the Flask API!"
 
-users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
 @app.route("/data")
 def data():
     """Returns a list of all usernames stored in the API."""
-    return jsonify(list(users.keys()))
+    return jsonify(users)
 
 @app.route("/status")
 def status():
     """Status endpoint — simple health check."""
-    return "<p>OK</p>"
+    return "OK"
 
 @app.route("/users/<username>")
 def get_user(username):
@@ -47,7 +47,7 @@ def add_user():
     
     username = data.get("username")
     if not username:
-        return jsonify({"error": "Username required"}), 409
+        return jsonify({"error": "Username required"}), 400
     
     if username in users:
         return jsonify({"error": "Username already exists"}), 409
