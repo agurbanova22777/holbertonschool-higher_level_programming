@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Update the name of the State object whose id is 2."""
+"""Update the name of the State object whose ID is 2."""
 
 from model_state import Base, State
 from sqlalchemy import create_engine

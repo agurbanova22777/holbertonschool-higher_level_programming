@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List states whose names start with an uppercase N."""
+"""List states whose names start with an uppercase N character."""
 
 import MySQLdb
 import sys
