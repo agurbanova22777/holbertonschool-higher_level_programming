@@ -1,24 +1,18 @@
 #!/usr/bin/python3
-"""Define a City class that maps to the cities database table."""
-
-from sqlalchemy import Column, ForeignKey, Integer, String
+"""
+Contains the class definition of a City.
+"""
+from sqlalchemy import Column, Integer, String, ForeignKey
 from model_state import Base
 
 
 class City(Base):
-    """Represent a city with a name and its associated state ID."""
-
-    __tablename__ = "cities"
-
-    id = Column(
-        Integer,
-        primary_key=True,
-        nullable=False,
-        autoincrement=True
-    )
+    """
+    City class:
+    - inherits from Base (imported from model_state)
+    - links to the MySQL table cities
+    """
+    __tablename__ = 'cities'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(
-        Integer,
-        ForeignKey("states.id"),
-        nullable=False
-    )
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
